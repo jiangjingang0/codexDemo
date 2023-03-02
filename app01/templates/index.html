@@ -5,7 +5,7 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>华师AI助手</title>
+    <title>AI助手</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <!-- 引入样式 -->
@@ -43,13 +43,13 @@
              <el-button style="float: right;top: 150px; right: 5%;position: fixed;width: 10%" @click="code">帮我写代码</el-button>
              <el-button style="float: right;top: 200px; right: 5%;position: fixed;width: 10%" @click="homework">帮我做题</el-button>
              <el-button style="float: right;top: 250px; right: 5%;position: fixed;width: 10%" @click="paper">帮我写文章</el-button>
-            <el-button style="float: right;top: 300px; right: 5%;position: fixed;width: 10%" @click="paper">我想写邮件</el-button>
+            <el-button style="float: right;top: 300px; right: 5%;position: fixed;width: 10%" @click="post">我想写邮件</el-button>
 
             <div id="message">
-                 <el-avatar :size="80" src="{% static "img/scnu.jpg" %}" style="float: left;"></el-avatar>
-            <div style="text-align: center; color: rgba(14,87,179,0.8);border-bottom-style: solid;font-size: 60px;font-weight: bolder;" v-if="this.value === ''">华师AI助手</div>
-            <div style="text-align: center; color: rgba(14,87,179,0.8);border-bottom-style: solid;font-size: 60px;" v-if="this.value === '选项1' || this.value === '选项2'">华师AI助手--代码小助手</div>
-            <div style="text-align: center; color: rgba(14,87,179,0.8);border-bottom-style: solid;font-size: 60px;" v-if="this.value === '选项3' || this.value === '选项4'">华师AI助手--问答小助手</div>
+{#                 <el-avatar :size="80" src="{% static "img/scnu.jpg" %}" style="float: left;"></el-avatar>#}
+            <div style="text-align: center; color: rgba(14,87,179,0.8);border-bottom-style: solid;font-size: 60px;font-weight: bolder;" v-if="this.value === ''">AI助手</div>
+            <div style="text-align: center; color: rgba(14,87,179,0.8);border-bottom-style: solid;font-size: 60px;" v-if="this.value === '选项1' || this.value === '选项2'">AI助手--代码小助手</div>
+            <div style="text-align: center; color: rgba(14,87,179,0.8);border-bottom-style: solid;font-size: 60px;" v-if="this.value === '选项3' || this.value === '选项4'">AI助手--问答小助手</div>
 
 
                 <div style="border-bottom: solid;height: 50px">
@@ -188,16 +188,7 @@
                <el-button @click="whisper('无人声.wav')">识别</el-button>
            </figure>
 
-            <el-upload
-              class="upload-demo"
-              ref="upload"
-              action= "https://1b41f208.r6.cpolar.top/whisper/"
-              :on-preview="handlePreview"
-              :file-list="fileList"
-              :auto-upload="false">
-              <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
 
-            </el-upload>
             <div style="border: solid 1px #DDD;width: 200px;height: 100px">
                 <label>
                     <textarea
@@ -218,7 +209,8 @@
         delimiters: ["[[", "]]"],
         data(){
             return{
-                ip_url: 'https://1b41f208.r6.cpolar.top',
+                cpolar: 'cpolar authtoken ZjJhOTFlNTEtMDAxZi00NDdiLTlmN2MtZThhYmNmZDA0N2Iw',
+                ip_url: 'https://7d34dbb0.r6.cpolar.top',
                 api: 'codex',
                 content:'',
                 gptImg: "templates/static/0.jpg",
@@ -284,7 +276,7 @@
                     },
                     {
                         value: '选项3',
-                        test: 'how to correct the code a[1,2,3,4,5] print(a[4])'
+                        test: 'how to correct the code a[1,2,3,4,5] print(a[5])'
                     },
                     {
                         value: '选项3',
@@ -344,27 +336,32 @@
 
             chat(){
                 this.value = "选项3"
-                let msg = '提示：“你可以问我：如何学好线性代数”'
+                let msg = '提示：你可以问我：“如何学好线性代数”'
                 this.tip = msg
             },
             code(){
                 this.value = "选项2"
-                let msg = '提示：“你可以问我：用python写一个快速排序”'
+                let msg = '提示：你可以问我：“用python写一个快速排序”'
                 this.tip = msg
             },
             homework(){
                 this.value = "选项3"
-                let msg = '提示：“你可以问我：鸡兔同笼问题”'
+                let msg = '提示：你可以问我：“鸡兔同笼问题”'
                 this.tip = msg
             },
             paper(){
                 this.value = "选项3"
-                let msg = '提示：“你可以问我：帮我写一封致谢信”'
+                let msg = '提示：你可以问我：“帮我写一封致谢信”'
                 this.tip = msg
             },
             correct(){
                 this.value = "选项3"
-                let msg = '提示：“你可以问我：修改语法：He like eating”'
+                let msg = '提示：你可以问我：“修改语法：He like eating”'
+                this.tip = msg
+            },
+            post(){
+                this.value = "选项3"
+                let msg = '提示：你可以问我：“我想写一封致谢信，感谢高中老师对我的帮助，请帮我写信”'
                 this.tip = msg
             },
 

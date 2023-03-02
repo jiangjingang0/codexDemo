@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-9i^xt+%u04166=78zgmt=kn7383=db82=84!v#^+soim#@ixa7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["1b41f208.r6.cpolar.top"]
+ALLOWED_HOSTS = ["7d34dbb0.r6.cpolar.top", '127.0.0.1']
 
 # Application definition
 
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080', 'http://localhost:8080', 'https://1b41f208.r6.cpolar.top')
+CORS_ORIGIN_WHITELIST = ('http://127.0.0.1:8080', 'http://localhost:8080', 'https://7d34dbb0.r6.cpolar.top')
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'
 
 ROOT_URLCONF = "codexDemo.urls"
