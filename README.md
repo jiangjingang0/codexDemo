@@ -5,3 +5,5 @@
 3、下载项目需要依赖的包，如：openai、django-cors-headers等，按照项目import的爆红逐个下载
 4、可申请自己的openai api key，在项目app01/.env里面替换为自己的
 5、项目启动成功后，浏览器输入127.0.0.1/test/
+openai api key 申请：
+先申请一个openai 的账号，然后访问这个网址https://platform.openai.com/account/api-keys ，点击create new secret key
