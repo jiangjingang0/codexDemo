@@ -15,8 +15,9 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Create your views here.
 
+@csrf_exempt
 def index(request):
-    print(request.GET['question'])
+    print(request.GET)
     q = request.GET['question']
     codex_model = request.GET['model']
     print(codex_model)
@@ -42,7 +43,7 @@ def index(request):
 
     return HttpResponse(json.dumps(data))
 
-
+@csrf_exempt
 def test(request):
     return render(request, "index.html")
 
